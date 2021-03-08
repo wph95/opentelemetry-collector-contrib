@@ -21,17 +21,13 @@ import (
 	"testing"
 
 	"go.opentelemetry.io/collector/testbed/testbed"
-	scenarios "go.opentelemetry.io/collector/testbed/tests"
-
-	"github.com/open-telemetry/opentelemetry-collector-contrib/testbed/datasenders"
 )
 
 var contribPerfResultsSummary testbed.TestResultsSummary = &testbed.PerformanceResults{}
 
 // TestMain is used to initiate setup, execution and tear down of testbed.
 func TestMain(m *testing.M) {
-	// These tests are using the unstable executable.
-	testbed.GlobalConfig.DefaultAgentExeRelativeFile = "../../bin/otelcontribcol_unstable_{{.GOOS}}_{{.GOARCH}}"
+	testbed.GlobalConfig.DefaultAgentExeRelativeFile = "../../bin/otelcontribcol_{{.GOOS}}_{{.GOARCH}}"
 	testbed.DoTestMain(m, contribPerfResultsSummary)
 }
 
